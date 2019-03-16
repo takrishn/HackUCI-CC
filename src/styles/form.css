@@ -1,0 +1,39 @@
+.input {
+    width: calc(100% - 23px);
+    padding: 7px 10px 7px 10px;
+    border: none;
+    border-radius: 3px;
+    border: 1px solid lightgrey;
+    margin-bottom: 13px;
+    font-family: "Open Sans", sans-serif;
+    color: #4f5a5e;
+    font-size: 14px;
+}
+
+.input#message {
+    resize: vertical;
+    margin: 3px 0 0 0;
+    font-family: "Open Sans", sans-serif;
+    min-height: 50px;
+    max-height: 200px;
+}
+
+.char-counter {
+    font-family: "Open Sans", sans-serif;
+    color: #6d747a;
+    font-size: 14px;
+    text-align: left;
+    margin-left: 2px;
+}
+
+.submit-button {
+    background-color: #d3a1ff;
+    width: 100%;
+    border: none;
+    border-radius: 3px;
+    height: 45px;
+    color: white;
+    font-family: "Open Sans", sans-serif;
+    font-size: 20px;
+    margin-top: 15px;
+}
