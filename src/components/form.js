@@ -8,8 +8,6 @@ class Form extends Component {
         this.state = {
             charsUsed: 0, // dynamically count/display characters used in the message textarea onChange
             fields: {first: '', last: '', email: '', message: ''}, // input values
-            errors: {} // error messages
-
         };
     }
     
@@ -19,39 +17,29 @@ class Form extends Component {
         let errors = {};
         let formIsValid = true;
 
+        // if the field is invalid, change border color to red to indicate invalid.
         // first name
         if(!fields['first']) {
             formIsValid = false;
-            errors['first'] = 'Cannot be empty';
             document.getElementById('first').style.borderColor = 'red';
         }
 
         // last name
         if(!fields['last']) {
             formIsValid = false;
-            errors['last'] = 'Cannot be empty';
             document.getElementById('last').style.borderColor = 'red';
         }
 
         // message
         if(!fields['message']) {
             formIsValid = false;
-            errors['message'] = 'Cannot be empty';
             document.getElementById('message').style.borderColor = 'red';
         }
 
         // email
-        if(!fields['email']) {
+        if(!fields['email'] || !fields['email'].match(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/ig)) {
             formIsValid = false;
-            errors['email'] = 'Cannot be empty';
             document.getElementById('email').style.borderColor = 'red';
-        }
-        if (typeof fields['email'] !== 'undefined') {
-            if (!fields['email'].match(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/ig)) {
-                formIsValid = false;
-                errors['email'] = 'Invalid Email';
-                document.getElementById('email').style.borderColor = 'red';
-            }
         }
 
         // set the state to changes made
@@ -72,6 +60,7 @@ class Form extends Component {
         let fields = this.state.fields;
         fields[field] = e.target.value;
         this.setState({fields: fields});
+        // set the border color back to what it was (lightgrey) just in case it was red.
         document.getElementById(field).style.borderColor = 'lightgrey';
     }
         
