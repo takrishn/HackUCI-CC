@@ -1,5 +1,5 @@
 ## What is this?
-Glad you asked. It's the HackUCI tech organizer coding challenge: https://drive.google.com/file/d/1g5h6Z63juWoPP5MR9sEwhYRxFNYs3RmZ/view
+Glad you asked. It's the HackUCI front-end coding challenge: https://drive.google.com/file/d/1g5h6Z63juWoPP5MR9sEwhYRxFNYs3RmZ/view
 
 ## How do you run it?
 Well you're going to need to install a couple things. (Assuming Windows 10).
