@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
 import '../styles/form.css';
+import axios from 'axios';
+
+// this component has all the form elements. 4 text boxes and the submit button.
+// message counter included.
+// form validation and the API call also occur here.
 
 class Form extends Component {
 
@@ -44,15 +49,24 @@ class Form extends Component {
 
         // set the state to changes made
         this.setState({errors: errors});
-        return formIsValid;
+        return formIsValid; // true or false
     }
 
+    // sends a post request if the form is deemed valid. otherwise prints invalid message to console.
     handleSubmit = event => {
         if (this.handleValidation()) {
-            console.log('Form submitted');
+            axios.post('https://tranquil-lowlands-24043.herokuapp.com/feedback', {
+                first: this.state.fields['first'],
+                last: this.state.fields['last'],
+                email: this.state.fields['email'],
+                message: this.state.fields['message']
+            }).then((response) => {
+                console.log(response.data); // display data to console
+            })
         } else {
             console.log('invalid');
         }
+        
     };
 
     // update the state based on user input
@@ -85,6 +99,7 @@ class Form extends Component {
                     maxLength="500" placeholder="Message"
                     onChange={this.handleWordCount.bind(this, "message")} value={this.state.fields["message"]}>
                 </textarea>
+
                 <div className="char-counter">{this.state.charsUsed}/500</div>
 
                 <button className="submit-button" onClick={this.handleSubmit}>Submit</button>
